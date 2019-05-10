@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raids - TrashTaggers</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet"/>
+<link href="/Content/site.css" rel="stylesheet"/>
+
+    <script src="/Scripts/modernizr-2.8.3.js"></script>
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Trash Taggers</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/Home/Raids">Raids</a></li>
+                    <li><a href="/Home/Upload">Upload</a></li>
+                    <li><a href="/Home/About">About</a></li>
+                    <li><a href="/Home/Contact">Contact</a></li>
+                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/Account/Register" id="registerLink">Register</a></li>
+        <li><a href="/Account/Login" id="loginLink">Log in</a></li>
+    </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+
+
+
+
+<h2>Raids</h2>
+
+<section>
+    <h3>The locations with more trash</h3>
+    <table>
+        <tr>
+            <th>Pos.</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Location</th>
+        </tr>
+        <tr>
+            <td>1º</td>
+            <td>...</td>
+            <td>...</td>
+            <td><button class="btnLocation" onclick="myFunction()"> Location</button></td>
+        </tr>
+        <tr>
+            <td>2º</td>
+            <td>...</td>
+            <td>...</td>
+            <td><button class="btnLocation" onclick="myFunction()"> Location</button></td>
+        </tr>
+        <tr>
+            <td>3º</td>
+            <td>...</td>
+            <td>...</td>
+            <td><button class="btnLocation" onclick="myFunction()"> Location</button></td>
+        </tr>
+        <tr>
+            <td>4º</td>
+            <td>...</td>
+            <td>...</td>
+            <td><button class="btnLocation" onclick="myFunction()"> Location</button></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>...</td>
+            <td>...</td>
+            <td><button class="btnLocation" onclick="myFunction()"> Location</button></td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h3>Localização</h3>
+
+    <div class="google-maps" id="demo">
+
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3113.1547442116052!2d-9.212212885406895!3d38.71425607959929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1ecca22559de4b%3A0xb9c4b48a69126ee3!2sO+CIF!5e0!3m2!1spt-PT!2sbe!4v1552645237904" width="600" height="450" style="border:0" allowfullscreen></iframe>
+
+    </div>
+</section>
+
+<script>
+    function myFunction() {
+        document.getElementById("demo").innerHTML = "Location is in here";
+    }
+
+    <img id="myImg" src="~" alt="Snow" style="width:100%;max-width:300px">
+
+        <!-- The Modal -->
+<div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+                <div id="caption"></div>
+</div>
+</script>
+
+
+        <hr />
+        <footer>
+            <p>&copy; 2019 - Trash Taggers</p>
+        </footer>
+    </div>
+
+    <script src="/Scripts/jquery-3.3.1.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+
+    
+</body>
+</html>
