@@ -1,46 +1,270 @@
 <template>
   <div id="app">
-      <l-map :zoom="zoom" :center="center">
-        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <l-marker :lat-lng="marker"></l-marker>
-    </l-map>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <router-link class="navbar-brand" to="/">
+            <img class="logo-img" src="/static/logo-white.png">
+          </router-link>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><router-link to="/">Home</router-link></li>
+            <li><router-link to="/raids">Raids</router-link></li>
+            <li><router-link to="/newtrashtag">New trashtag</router-link></li>
+            <li><router-link to="/about">About</router-link></li>
+            <li><router-link to="/contact">Contact</router-link></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><router-link to="/register">Register</router-link></li>
+            <li><router-link to="/login">Login</router-link></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <router-view class="router">
+    </router-view>
   </div>
 </template>
 
 <script>
-import {LMap, LTileLayer, LMarker} from 'vue2-leaflet'
-import { Icon }  from 'leaflet'
-import 'leaflet/dist/leaflet.css'
-
-
-// this part resolve an issue where the markers would not appear
-delete Icon.Default.prototype._getIconUrl;
-
-Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
-});
-
-
 export default {
   name: 'App',
-  components: { LMap, LTileLayer, LMarker },
   data: () => {
     return {
-      zoom: 13,
-      center: L.latLng(47.413220, -1.219482),
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      marker: L.latLng(47.413220, -1.219482)
     }
   }
 }
 </script>
 
 <style>
-html, body, #app {
+html, body, #app, .router {
   height: 100%;
   margin: 0;
+  color:#0e542e;
+}
+
+.logo-img {
+  height: 100%;
+}
+
+.navbar-brand {
+  padding: 0.3rem;
+}
+
+body {
+  padding-top: 50px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.nav {
+  font-size: 16px;
+}
+
+.error {
+  color: red;
+}
+
+.navbar-inverse {
+  background-color: #0e542e;
+  border-color: #0e542e;
+}
+.navbar-inverse .navbar-brand {
+  color: #ddd;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #ddd
+}
+
+/*Table Raids*/
+table,
+td,
+th {
+    border-collapse: separate;
+}
+
+th {
+    text-align: left;
+}
+
+td,
+th {
+    padding: 0.7em;
+}
+
+/* extra's for desktop layout */
+
+
+/* Markup for table head */
+
+thead {
+    background-color: #484848;
+    color: #FFF;
+}
+
+/* Zebra lay-out */
+
+tr:nth-of-type(2n) {
+    background-color: #DDD;
+}
+
+td:nth-of-type(1),
+th:nth-of-type(1) {
+    width: 2em;
+    text-align: right;
+}
+
+.btnLocation {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    /* Darker background on mouse-over */
+    .btnLocation:hover {
+        background-color: RoyalBlue;
+    }
+
+.google-maps {
+    position: relative;
+    padding-bottom: 50%;
+    height: 0;
+    overflow: hidden;
+}
+
+    .google-maps iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    #myImg:hover {
+        opacity: 0.7;
+    }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
 }
 </style>
